@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ public class Login extends AppCompatActivity {
     private EditText ed_user, ed_pass;
     Intent intent;
     NVDao nvdao;
-    CheckBox chk_remember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,6 @@ public class Login extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         ed_user.setText(preferences.getString("USERNAME", ""));
         ed_pass.setText(preferences.getString("PASSWORD", ""));
-        chk_remember.setChecked(preferences.getBoolean("REMEMBER", false));
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +57,6 @@ public class Login extends AppCompatActivity {
             if (nvdao.getlogin(usered, passed) > 0 || (usered.equalsIgnoreCase("admin") && passed.equalsIgnoreCase("admin"))
                     || (usered.equalsIgnoreCase("user") && passed.equalsIgnoreCase("user"))) {
                 Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                rememberUser(usered, passed, chk_remember.isChecked());
                 startActivity(intent = new Intent(Login.this, MainActivity.class).putExtra("admintion", usered));
                 finish();
             } else {

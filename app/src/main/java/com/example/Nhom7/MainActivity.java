@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     View mHeaderview;
     TextView tv_user, tv_email;
-    ImageView img_user;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +37,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_Quanlyphieu, R.id.nav_top10,
-                R.id.nav_tong, R.id.nav_admin,R.id.nav_doimk)
+                R.id.nav_tong, R.id.nav_admin, R.id.nav_doimk)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-//            @Override
-//            public void onDestinationChanged(@NonNull @NotNull NavController controller, @NonNull @NotNull NavDestination destination, @Nullable @org.jetbrains.annotations.Nullable Bundle arguments) {
-//                if (destination.getID() == R.id.nav_exit) {
-//                    startActivity(intent = new Intent(getApplicationContext(), Login.class));
-//                }
-//            }
-//        });
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         mHeaderview = navigationView.getHeaderView(0);

@@ -69,7 +69,6 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Tác giả Sách"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="12dp"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
