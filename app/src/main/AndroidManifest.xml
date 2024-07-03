@@ -8,9 +8,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom7">
-        <activity android:name="com.example.Nhom7.ManhinhHome">
-
-        </activity>
         <activity android:name="com.example.Nhom7.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

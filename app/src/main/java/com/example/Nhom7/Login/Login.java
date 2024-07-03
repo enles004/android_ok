@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
         btn_login = findViewById(R.id.login_btn);
         ed_user = findViewById(R.id.ed_user);
         ed_pass = findViewById(R.id.ed_pass);
-        chk_remember = findViewById(R.id.chk_remember);
         nvdao = new NVDao(this);
         nvdao.OPEN();
         if (nvdao.getUserName("admin") < 0) {
