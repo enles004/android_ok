@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         mHeaderview = navigationView.getHeaderView(0);
         tv_user = mHeaderview.findViewById(R.id.tv_user);
-        img_user = mHeaderview.findViewById(R.id.img_user);
+
         Intent intent = getIntent();
         String user = intent.getStringExtra("admintion");
         tv_user.setText("Wellcome " + user + "!");
         if (user.equals("admin")) {
-            img_user.setImageResource(R.drawable.ic_administrator);
+
             navigationView.getMenu().findItem(R.id.nav_admin).setVisible(true);
         } else {
             navigationView.getMenu().findItem(R.id.nav_admin).setVisible(false);
