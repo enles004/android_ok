@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_socialcare" />
+        app:srcCompat="@drawable/logo_utt" />
 
     <EditText
         android:id="@+id/ed_hotentvedit"
@@ -24,7 +24,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:drawableLeft="@drawable/ic_name"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Họ và tên"
@@ -42,7 +41,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:drawableLeft="@drawable/ic_calendar"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Năm sinh"
@@ -66,19 +64,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_namstvedit">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_themtvsua"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:drawableLeft="@drawable/ic_addbutton"
             android:text="Thêm" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_clentvedit"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_cancel"
            android:layout_marginHorizontal="17dp"
             android:text="Hủy" />
     </LinearLayout>

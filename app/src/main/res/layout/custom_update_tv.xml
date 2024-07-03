@@ -12,7 +12,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:drawableLeft="@drawable/ic_name"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Họ và tên"
@@ -30,7 +29,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:drawableLeft="@drawable/ic_calendar"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Ngày sinh"
@@ -57,7 +55,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:drawableLeft="@drawable/ic_addbutton"
             android:text="Lưu" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -65,7 +62,6 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="17dp"
-            android:drawableLeft="@drawable/ic_cancel"
             android:text="Hủy" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
