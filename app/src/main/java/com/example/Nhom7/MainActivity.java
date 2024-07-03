@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     View mHeaderview;
     TextView tv_user, tv_email;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
