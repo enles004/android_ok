@@ -8,14 +8,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom7">
-        <activity android:name="com.example.Nhom7.Splash">
+        <activity android:name="com.example.Nhom7.Login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.Nhom7.Login.Login" />
         <activity
             android:name="com.example.Nhom7.MainActivity"
             android:label="@string/app_name"

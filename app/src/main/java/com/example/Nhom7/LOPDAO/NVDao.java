@@ -44,11 +44,6 @@ public class NVDao {
         return sqlite.update(NhanVien.TB_NAME, values, "maNV=?", new String[]{nhanVien.getMaNV()});
     }
 
-    public int Thaypass(NhanVien nhanVien) {
-        ContentValues values = new ContentValues();
-        values.put(NhanVien.COL_MK, nhanVien.getMaKhau());
-        return sqlite.update(NhanVien.TB_NAME, values, "maNV=?", new String[]{nhanVien.getMaNV()});
-    }
 
     public int DELETE(String mNV) {
         return sqlite.delete(NhanVien.TB_NAME, "maNV=?", new String[]{mNV});

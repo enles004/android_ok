@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,22 +16,19 @@ import com.example.Nhom7.MainActivity;
 import com.example.Nhom7.R;
 
 public class Login extends AppCompatActivity {
-    private AppCompatButton btn_login, btn_clear;
+    private AppCompatButton btn_login;
     private EditText ed_user, ed_pass;
     Intent intent;
     NVDao nvdao;
-    CheckBox chk_remember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         btn_login = findViewById(R.id.login_btn);
-        btn_clear = findViewById(R.id.btn_clear);
         ed_user = findViewById(R.id.ed_user);
         ed_pass = findViewById(R.id.ed_pass);
         nvdao = new NVDao(this);
-//        NhanVien nhanVien = nvdao.getUser("admin");
         nvdao.OPEN();
         if (nvdao.getUserName("admin") < 0) {
             nvdao.ADDNV(new NhanVien("admin", "admin", "admin"));
@@ -41,7 +37,6 @@ public class Login extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         ed_user.setText(preferences.getString("USERNAME", ""));
         ed_pass.setText(preferences.getString("PASSWORD", ""));
-        chk_remember.setChecked(preferences.getBoolean("REMEMBER", false));
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,12 +44,7 @@ public class Login extends AppCompatActivity {
                 checklogin();
             }
         });
-        btn_clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finishAffinity();
-            }
-        });
+
 
     }
 
@@ -67,7 +57,6 @@ public class Login extends AppCompatActivity {
             if (nvdao.getlogin(usered, passed) > 0 || (usered.equalsIgnoreCase("admin") && passed.equalsIgnoreCase("admin"))
                     || (usered.equalsIgnoreCase("user") && passed.equalsIgnoreCase("user"))) {
                 Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                rememberUser(usered, passed, chk_remember.isChecked());
                 startActivity(intent = new Intent(Login.this, MainActivity.class).putExtra("admintion", usered));
                 finish();
             } else {
