@@ -37,11 +37,4 @@ public class Top10Dao {
         }
         return list;
     }
-//
-//    public int GETTOP() {
-//        String sql = "SELECT maSach , COUNT(maSach) AS soLuong FROM PhieuMuon GROUP BY maSach ORDER BY soLuong DESC LIMIT 10";
-//        Cursor cursor = liteDatabase.rawQuery(sql, null);
-//        cursor.moveToFirst();
-//        return cursor.getInt(0);
-//    }
 }

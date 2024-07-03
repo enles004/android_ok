@@ -17,7 +17,7 @@ import com.example.Nhom7.MainActivity;
 import com.example.Nhom7.R;
 
 public class Login extends AppCompatActivity {
-    private AppCompatButton btn_login, btn_clear;
+    private AppCompatButton btn_login;
     private EditText ed_user, ed_pass;
     Intent intent;
     NVDao nvdao;
@@ -28,12 +28,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         btn_login = findViewById(R.id.login_btn);
-        btn_clear = findViewById(R.id.btn_clear);
         ed_user = findViewById(R.id.ed_user);
         ed_pass = findViewById(R.id.ed_pass);
         chk_remember = findViewById(R.id.chk_remember);
         nvdao = new NVDao(this);
-//        NhanVien nhanVien = nvdao.getUser("admin");
         nvdao.OPEN();
         if (nvdao.getUserName("admin") < 0) {
             nvdao.ADDNV(new NhanVien("admin", "admin", "admin"));
@@ -50,12 +48,7 @@ public class Login extends AppCompatActivity {
                 checklogin();
             }
         });
-        btn_clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finishAffinity();
-            }
-        });
+
 
     }
 
