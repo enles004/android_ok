@@ -75,7 +75,7 @@ public class Ls_Adapter extends RecyclerView.Adapter<Ls_Adapter.LoaiSachhoder> {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("Delete");
-                builder.setIcon(R.drawable.ic_dele);
+                builder.setIcon(R.drawable.logo_utt);
                 builder.setMessage("Bạn có muốn xóa không?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {

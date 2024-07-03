@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Exit(MenuItem item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.ic_baseline_cancel_24);
+        builder.setIcon(R.drawable.logo_utt);
         builder.setTitle("Đăng xuất");
         builder.setMessage("Bạn có muốn đăng xuất không?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
