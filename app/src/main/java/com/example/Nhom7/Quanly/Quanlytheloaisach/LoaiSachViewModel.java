@@ -1,4 +1,4 @@
-package com.example.Nhom7.QuanlyvsThongke.Quanlytheloaisach;
+package com.example.Nhom7.Quanly.Quanlytheloaisach;
 
 import android.app.Application;
 
