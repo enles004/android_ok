@@ -1,5 +1,6 @@
 package com.example.Nhom7.Login;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class Login extends AppCompatActivity {
     Intent intent;
     NVDao nvdao;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,6 @@ public class Login extends AppCompatActivity {
         if (nvdao.getUserName("admin") < 0) {
             nvdao.ADDNV(new NhanVien("admin", "admin", "admin"));
         }
-        // Đọc Sharepreferences
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         ed_user.setText(preferences.getString("USERNAME", ""));
         ed_pass.setText(preferences.getString("PASSWORD", ""));
@@ -65,21 +66,4 @@ public class Login extends AppCompatActivity {
             }
         }
     }
-
-    public void rememberUser(String user, String pass, boolean status) {
-        SharedPreferences pref = getSharedPreferences("USER_FILE", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        if (!status) {
-            // Xóa lưu trữ trước đó
-            editor.clear();
-        } else {
-            // Lưu dữ liệu
-            editor.putString("USERNAME", user);
-            editor.putString("PASSWORD", pass);
-            editor.putBoolean("REMEMBER", status);
-        }
-        // LƯu lại toàn bộ dữ liệu
-        editor.commit();
-    }
-
 }
