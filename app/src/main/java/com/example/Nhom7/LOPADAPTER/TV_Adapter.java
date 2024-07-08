@@ -3,12 +3,9 @@ package com.example.Nhom7.LOPADAPTER;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -21,8 +18,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.Nhom7.LOPPRODUCT.ThanhVien;
 import com.example.Nhom7.LOPDAO.ThanhVienDao;
+import com.example.Nhom7.LOPPRODUCT.ThanhVien;
 import com.example.Nhom7.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +37,6 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
         this.context = context;
         this.list = list;
         this.mlistOld=list;
-
     }
 
     @NonNull
@@ -48,7 +44,6 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
     @Override
     public tvhoder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.custom_list_thanhvien, parent, false);
-
         return new tvhoder(view);
     }
 
@@ -63,22 +58,11 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
             holder.tv_hoten.setText("Họ Và Tên: " + thanhVien.getHoTenTV());
             holder.tv_namsinh.setText("Năm Sinh: " + thanhVien.getNamsinhTV());
         }
-        if (position % 2 == 1 || position % 2 != 0) {
-            holder.tv_maTV.setTextColor(Color.GREEN);
-            holder.tv_hoten.setTextColor(Color.GREEN);
-            holder.tv_namsinh.setTextColor(Color.GREEN);
-        } else {
-            holder.tv_maTV.setTextColor(Color.RED);
-            holder.tv_hoten.setTextColor(Color.RED);
-            holder.tv_namsinh.setTextColor(Color.RED);
-        }
 
         holder.img_dele.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setTitle("Delete");
-                builder.setIcon(R.drawable.logo_utt);
                 builder.setMessage("Bạn có muốn xóa không?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
@@ -125,25 +109,22 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
                 btn_save.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (thanhVien.getHoTenTV().equals(ed_edhotentv.getText().toString()) && thanhVien.getNamsinhTV().equals(ed_namsinhtv.getText().toString())) {
-                            Toast.makeText(context.getApplicationContext(), "Không Có Gì Thay Đổi \n Sửa Thất Bại!", Toast.LENGTH_SHORT).show();
+                        vienDao = new ThanhVienDao(context);
+                        thanhVien.setHoTenTV(ed_edhotentv.getText().toString());
+                        thanhVien.setNamsinhTV(ed_namsinhtv.getText().toString());
+                        long kq = vienDao.UPDATETV(thanhVien);
+                        if (kq > 0) {
+                            list.clear();
+                            list.addAll(vienDao.GETTV());
+                            notifyDataSetChanged();
+                            ed_edhotentv.setText("");
+                            ed_namsinhtv.setText("");
+                            dialog.dismiss();
+                            Toast.makeText(context.getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();
                         } else {
-                            vienDao = new ThanhVienDao(context);
-                            thanhVien.setHoTenTV(ed_edhotentv.getText().toString());
-                            thanhVien.setNamsinhTV(ed_namsinhtv.getText().toString());
-                            long kq = vienDao.UPDATETV(thanhVien);
-                            if (kq > 0) {
-                                list.clear();
-                                list.addAll(vienDao.GETTV());
-                                notifyDataSetChanged();
-                                ed_edhotentv.setText("");
-                                ed_namsinhtv.setText("");
-                                dialog.dismiss();
-                                Toast.makeText(context.getApplicationContext(), "Sửa Thành Công", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context.getApplicationContext(), "Sửa Thất Bại", Toast.LENGTH_SHORT).show();
-                            }
+                            Toast.makeText(context.getApplicationContext(), "Sửa Thất Bại", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
                 btn_huy.setOnClickListener(new View.OnClickListener() {
@@ -212,8 +193,6 @@ public class TV_Adapter extends RecyclerView.Adapter<TV_Adapter.tvhoder> impleme
             img_edi = itemView.findViewById(R.id.img_edittv);
             tv_vtri = itemView.findViewById(R.id.tv_vtri);
             constraintLayout = itemView.findViewById(R.id.cns_tv);
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.transition);
-            constraintLayout.setAnimation(animation);
         }
     }
 
